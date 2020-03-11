@@ -1,12 +1,12 @@
 $(function() {
-    $(".submit").on("click", function(event) {
+    $("#submit").on("click", function(event) {
         event.preventDefault();
         console.log("submit")
         var newBurger = {
-            name: ("#bu").val().trim(),
+            name: $("#bu").val().trim(),
             devoured: false
         };
-        $.ajax("/api/burgers".{
+        $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
         }).then(
