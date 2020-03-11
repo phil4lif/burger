@@ -64,13 +64,29 @@ var orm = {
             cb(result);
         });
     },
+    delete: function (table, condition, cb) {
+        var queryString = "DELETE FROM " + table;
+
+        queryString += " WHERE ";
+        queryString += condition;
+
+        console.log(queryString);
+        connection.query(queryString, condition, function (err, result){
+            if (err) {
+                throw err;
+            }
+            cb(result);
+        });
+
+
+    },
     //updateOne
     update: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
 
-        queryString += "SET ";
+        queryString += " SET ";
         queryString += objToSql(objColVals);
-        queryString += "WHERE ";
+        queryString += " WHERE ";
         queryString += condition;
 
         console.log(queryString);

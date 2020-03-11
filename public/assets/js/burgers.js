@@ -18,18 +18,28 @@ $(function() {
     });
     $(".devbutton").on("click", function(event) {
         var id = $(this).data("id");
-        var newDev = $(this).data("newdev");
-        var newDevState = {
-            devoured: newDev
-        };
-        $.ajax("/api/cats/" + id, {
-            type: "PUT",
-            data: newDevState
+        // var newDev = $(this).data("newdev");
+        // var newDevState = {
+        //     devoured: newDev
+        // };
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT"
+            // data: newDevState
         }).then(
             function() {
-                console.log("changed devoured to", newDev);
+                // console.log("changed devoured to", newDev);
                 location.reload();
             }
         )
+    })
+    $(".delbutton").on("click", function(event) {
+        var id = $(this).data("id");
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE"
+        }).then(
+            function(data) {
+                console.log(data)
+            location.reload();
+        })
     })
 });
